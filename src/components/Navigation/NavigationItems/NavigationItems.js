@@ -13,6 +13,7 @@ const NavigationItems = () => {
   const guestLinks = (
     <ul className={ classes['navigation-items'] }>
       <NavigationItem link='/'>Home</NavigationItem>
+      <NavigationItem link='/playground'>Playground</NavigationItem>
     </ul>
   );
 
