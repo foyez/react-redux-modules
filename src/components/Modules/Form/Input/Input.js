@@ -18,7 +18,7 @@ const Input = props => {
       inputEl = (
         <div className={ props.className }>
           { props.fieldNames.map(fieldName => (
-            <div className={ classes["radio-group"] }>
+            <div key={ fieldName } className={ classes["radio-group"] }>
               <input type="radio" className={ classes["radio-input"] } id={ fieldName } name='radio-name' />
               <label htmlFor={ fieldName } className={ classes["radio-label"] }>
                 <span className={ classes["radio-button"] }></span>
@@ -33,7 +33,7 @@ const Input = props => {
       inputEl = (
         <div className={ props.className }>
           { props.fieldNames.map(fieldName => (
-            <div className={ classes["checkbox-group"] }>
+            <div key={ fieldName } className={ classes["checkbox-group"] }>
               <input type="checkbox" className={ classes["checkbox-input"] } id={ fieldName } />
               <label htmlFor={ fieldName } className={ classes["checkbox-label"] }>
                 <span className={ classes["checkbox-button"] }></span>

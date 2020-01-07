@@ -1,6 +1,7 @@
 import React from 'react';
 
-import logo from '../../assets/img/burger-logo.png';
+// import logo from '../../assets/img/burger-logo.png';
+import logo from '../../assets/img/logo-white.png';
 import classes from './Logo.module.scss';
 
 const Logo = ({ height }) => (

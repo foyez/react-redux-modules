@@ -11,8 +11,8 @@ const AnswerReveal = props => {
           { props.question }
         </label>
       </h2>
-      { props.answers.map(answer => (
-        <p className={ classes['answer_p'] }>
+      { props.answers.map((answer, id) => (
+        <p key={ id } className={ classes['answer_p'] }>
           { answer }
         </p>
       )) }

@@ -6,13 +6,13 @@ import NavigationItem from './NavigationItem/NavigationItem';
 const NavigationItems = () => {
   const authLinks = (
     <ul className={ classes['navigation-items'] }>
-      <NavigationItem link='/'>Home</NavigationItem>
+      <NavigationItem link='/' exact>Home</NavigationItem>
     </ul>
   );
 
   const guestLinks = (
     <ul className={ classes['navigation-items'] }>
-      <NavigationItem link='/'>Home</NavigationItem>
+      <NavigationItem link='/' exact>Home</NavigationItem>
       <NavigationItem link='/playground'>Playground</NavigationItem>
     </ul>
   );
