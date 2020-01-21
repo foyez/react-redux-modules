@@ -1,30 +1,32 @@
 import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
-import * as actions from '../../store/actions';
+import { createStructuredSelector } from 'reselect';
+import { selectPostList } from '../../store/posts/posts.selectors'
+import { getAllPosts } from '../../store/posts/posts.actions';
 
-const Dashboard = props => {
+const Dashboard = ({ postList, getAllPosts }) => {
   useEffect(() => {
-    props.getAllPosts();
+    getAllPosts();
   }, []);
 
   let posts = (
     <div>Loading...</div>
   );
 
-  if (props.postList) {
-    posts = props.postList.slice(0, 10).map(post => <div key={ post.id }>{ post.id + '. ' + post.title }</div>);
+  if (postList) {
+    posts = postList.slice(0, 10).map(post => <div key={ post.id }>{ post.id + '. ' + post.title }</div>);
   }
 
   return posts;
 }
 
-const mapStateToProps = state => ({
-  postList: state.posts.postList,
+const mapStateToProps = createStructuredSelector({
+  postList: selectPostList,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllPosts: () => dispatch(actions.getAllPosts()),
+  getAllPosts: () => dispatch(getAllPosts()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

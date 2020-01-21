@@ -1,3 +1,0 @@
-export {
-  getAllPosts
-} from './posts';

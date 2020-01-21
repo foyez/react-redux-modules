@@ -1,12 +1,12 @@
-import { ALL_POSTS } from '../actions/actionTypes';
+import * as actionTypes from './posts.types';
 
 const initialState = {
   postList: null,
 };
 
-const postsReducer = (state = initialState, action = {}) => {
+const postsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ALL_POSTS:
+    case actionTypes.ALL_POSTS:
       return {
         ...state,
         postList: action.payload,
