@@ -8,7 +8,8 @@ const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middlewares = [logger, thunk, sagaMiddleware];
+const middlewares = [thunk, sagaMiddleware];
+process.env.NODE_ENV === 'development' && middlewares.push(logger);
 
 const store = createStore(
   rootReducer,

@@ -1,15 +1,29 @@
-import * as actionTypes from './posts.types';
+import actionTypes from './posts.types';
 
 const initialState = {
   postList: null,
+  isFetching: false,
+  errorMessage: undefined,
 };
 
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.ALL_POSTS:
+    case actionTypes.FETCH_POSTS_START:
       return {
         ...state,
+        isFetching: true,
+      };
+    case actionTypes.FETCH_POSTS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
         postList: action.payload,
+      };
+    case actionTypes.FETCH_POSTS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload
       };
     default:
       return state;
