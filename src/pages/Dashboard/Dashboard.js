@@ -3,14 +3,14 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectPostList } from '../../store/posts/posts.selectors';
-import { fetchPostsAsync } from '../../store/posts/posts.actions';
+import { fetchPostsStart } from '../../store/posts/posts.actions';
 
-const Dashboard = ({ postList, fetchPostsAsync }) => {
+const Dashboard = ({ postList, fetchPostsStart }) => {
 	useEffect(
 		() => {
-			fetchPostsAsync();
+			fetchPostsStart();
 		},
-		[ fetchPostsAsync ]
+		[ fetchPostsStart ]
 	);
 
 	let posts = <div>Loading...</div>;
@@ -27,7 +27,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	fetchPostsAsync: () => dispatch(fetchPostsAsync())
+	fetchPostsStart: () => dispatch(fetchPostsStart())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
