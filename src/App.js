@@ -3,26 +3,27 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 
 import Layout from './layout/Layout';
 import DashboardPage from './pages/dashboard/dashboard.component';
-import PlaygroundPage from './pages/Playground/Playground';
+import PlaygroundPage from './pages/playground/playground.component';
 import Spinner from './components/UI/Spinner/Spinner';
+import ErrorBoundary from './components/error-boundary/error-boundary.component';
 
 const NotFound = lazy(() => import('./components/404/404'));
 
 const App = () => {
 	const routes = (
-		<Switch>
-			<Route path="/" exact component={DashboardPage} />
-			<Route path="/playground" component={PlaygroundPage} />
-			<Route path="*" component={NotFound} />
-			<Redirect to="/" />
-		</Switch>
+		<ErrorBoundary>
+			<Switch>
+				<Route path="/" exact component={DashboardPage} />
+				<Route path="/playground" component={PlaygroundPage} />
+				<Suspense fallback={<Spinner />}>
+					<Route path="*" component={NotFound} />
+				</Suspense>
+				<Redirect to="/" />
+			</Switch>
+		</ErrorBoundary>
 	);
 
-	return (
-		<Layout>
-			<Suspense fallback={<Spinner />}>{routes}</Suspense>
-		</Layout>
-	);
+	return <Layout>{routes}</Layout>;
 };
 
 export default withRouter(App);

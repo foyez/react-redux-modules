@@ -13,6 +13,8 @@ const DashboardPage = ({ fetchPostsStart }) => {
 		[ fetchPostsStart ]
 	);
 
+	// throw Error;
+
 	return <Posts />;
 };
 
