@@ -1,6 +1,6 @@
 import { all, call } from 'redux-saga/effects';
-import { fetchPostsStart } from './posts/posts.sagas';
+import { postsSaga } from './posts/posts.sagas';
 
 export default function* rootSaga() {
-	yield all([ call(fetchPostsStart) ]);
+	yield all([ call(postsSaga) ]);
 }
